@@ -6,13 +6,55 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:02:45 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/05/24 12:52:43 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:36:41 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
+#include <stdarg.h>
 
 static int	ft_filter(char const *content, int i, va_list *args)
 {
-	
+	int	filter_print;
+
+	filter_print = 0;
+	if (content[i] == 'c')
+		filter_print += ft_printchar(va_arg(*args, int));
+	if (content[i] == 's')
+		filter_print += ft_printstr(va_arg(*args, char *));
+	if (content[i] == 'p')
+		filter_print += ft_printptr(va_arg(*args, unsigned long long));
+	if (content[i] == 'd' || content[i] == 'i')
+		filter_print += ft_printdec(va_arg(*args, int));
+	if (content[i] == 'u')
+		filter_print += ft_printunsigned(va_arg(*args, unsigned int));
+	if (content[i] == 'x' || content[i] == 'X')
+		filter_print += ft_printhexa(va_arg(*args, unsigned int), content[i]);
+	if (content[i] == '%')
+		filter_print += ft_printchar('%');
+	return (filter_print);
+}
+
+int	ft_printf(char const *content, ...)
+{
+	va_list	args;
+	int		i;
+	int		c;
+
+	i = 0;
+	c = 0;
+	va_start(args, content);
+	while (content[i])
+	{
+		if (content[i] != '%')
+			c += ft_printchar(content[i]);
+		else
+		{
+			i++;
+			c += ft_filter(content, i, &args);
+		}
+		i++;
+	}
+	va_end(args);
+	return (c);
 }

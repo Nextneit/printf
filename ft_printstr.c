@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:23:05 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/05/22 16:18:17 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:04:10 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	ft_printstr(char *str)
 {
 	int	i;
 
-	if (!str)
-		return (ft_printstr ('NULL'));
 	i = 0;
+	if (!str)
+		return (ft_printstr("(null)"));
 	while (str[i] != '\0')
 	{
-		write (1, &str[i], 1);
+		ft_printchar (str[i]);
 		i++;
 	}
-	return (1);
+	return (i);
 }

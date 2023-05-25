@@ -1,6 +1,6 @@
-NAME: libftprintf.a
+NAME = libftprintf.a
 
-FILES:	ft_printchar.c\
+FILES =	ft_printchar.c\
 		ft_printstr.c\
 		ft_printdec.c\
 		ft_printhexa.c\
@@ -8,23 +8,23 @@ FILES:	ft_printchar.c\
 		ft_printunsigned.c\
 		ft_printf.c\
 
-OBJ: $(FILES:.c=.o)
+OBJ = $(FILES:.c=.o)
 
-FLAGS: -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS) 
-$(OBJS) : $(FILES)
+$(NAME) : $(OBJ)
+	ar rcs $(NAME) $(OBJ) 
+$(OBJ) : $(FILES)
 	gcc $(FLAGS) -c $(FILES)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean:
-	rm -f $(NAME) $(OBJS)
+	rm -f $(NAME) $(OBJ)
 
 re: fclean all
 
-.PHONY : all re fclean clean bonus
+.PHONY : all re fclean clean
