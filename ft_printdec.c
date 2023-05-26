@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:41:07 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/05/25 12:22:21 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:31:49 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_putnbr(int n)
 	if (n < 0)
 	{
 		ft_printchar('-');
-		n *= -1;
+		n = -n;
 	}
 	if (n >= 0 && n <= 9)
 		ft_printchar(n + '0');

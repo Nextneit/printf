@@ -6,12 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:02:45 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/05/25 12:36:41 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:35:48 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
 static int	ft_filter(char const *content, int i, va_list *args)
 {
