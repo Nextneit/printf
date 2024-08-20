@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:49:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/07/26 10:01:08 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:57:23 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,3 @@ int	ft_printstr(char *str)
 	}
 	return (j);
 }
-
-/*
-#include <stdio.h>
-int	main()
-{
-	int j;
-
-	j = ft_printstr ("iahdhuh");
-	printf ("%d", j);
-	return (0);
-}
-*/
