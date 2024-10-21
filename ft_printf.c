@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:27:59 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 11:56:58 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:15:34 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int	ft_filter(char const *content, int i, va_list *args)
 {
-	int	filter_print;
+	int	print_count;
 
-	filter_print = 0;
+	print_count = 0;
 	if (content[i] == 'c')
-		filter_print = ft_putchar(va_arg(*args, int));
+		print_count = ft_putchar(va_arg(*args, int));
 	if (content[i] == 's')
-		filter_print = ft_printstr(va_arg(*args, char *));
+		print_count = ft_printstr(va_arg(*args, char *));
 	if (content[i] == 'p')
-		filter_print = ft_printptr(va_arg(*args, unsigned long long));
+		print_count = ft_printptr(va_arg(*args, unsigned long long));
 	if (content[i] == 'd' || content[i] == 'i')
-		filter_print = ft_printdec(va_arg(*args, int));
+		print_count = ft_printdec(va_arg(*args, int));
 	if (content[i] == 'u')
-		filter_print = ft_printunsigned(va_arg(*args, unsigned int));
+		print_count = ft_printunsigned(va_arg(*args, unsigned int));
 	if (content[i] == 'x' || content[i] == 'X')
-		filter_print = ft_printhexa(va_arg(*args, unsigned int), content[i]);
+		print_count = ft_printhexa(va_arg(*args, unsigned int), content[i]);
 	if (content[i] == '%')
-		filter_print = ft_putchar('%');
-	return (filter_print);
+		print_count = ft_putchar('%');
+	return (print_count);
 }
 
 int	ft_printf(char const *content, ...)
@@ -45,19 +45,15 @@ int	ft_printf(char const *content, ...)
 	va_start(args, content);
 	while (content[i])
 	{
-		if (content[i] != '%')
-		{
-			c += ft_putchar(content[i]);
-			if (c == -1)
-				return (-1);
-		}
-		else
+		if (content[i] == '%')
 		{
 			i++;
 			c += ft_filter(content, i, &args);
-			if (c == -1)
-				return (-1);
 		}
+		else
+			c += ft_putchar(content[i]);
+		if (c == -1)
+			return (-1);
 		i++;
 	}
 	return (va_end(args), c);

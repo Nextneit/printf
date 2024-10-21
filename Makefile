@@ -1,11 +1,8 @@
 NAME = libftprintf.a
 
-FILES =	ft_putchar.c\
-		ft_printstr.c\
-		ft_printdec.c\
-		ft_printhexa.c\
+FILES =	ft_printchar.c\
+		ft_printnbr.c\
 		ft_printptr.c\
-		ft_printunsigned.c\
 		ft_printf.c\
 
 OBJ = $(FILES:.c=.o)
